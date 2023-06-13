@@ -28,19 +28,17 @@ const Login = (props) => {
 
   return (
     <div className='auth-form-container'>
-      <h1>{t('Welcome to React')}</h1>
-      <h2>Login</h2>
+      <h2>{t('login')}</h2>
       <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">{t('username')}</label>
         <input
           type="text"
           id="username"
-          placeholder="Username"
           value={username}
           onChange={handleUsernameChange}
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('password')}</label>
         <input
           type="password"
           id="password"
@@ -48,9 +46,9 @@ const Login = (props) => {
           onChange={handlePasswordChange}
         />
 
-        <button type="submit">Login</button>
+        <button type="submit">{t('login')}</button>
 
-        <button className='link-btn' type="button" onClick={() => props.onFormSwitch('register')}>Don't have an account yet?  Register</button>
+        <button className='link-btn' type="button" onClick={() => props.onFormSwitch('register')}>{t('noAcc')}</button>
       </form>
     </div>
   );

@@ -1,3 +1,12 @@
 {
-    "Welcome to React": "Welcome to react using react-i18next"
+    "login": "Login",
+    "username": "Username",
+    "password": "Password",
+    "noAcc": "Don't have an account yet? Register",
+    "register": "Register",
+    "firstName": "First name:",
+    "lastName": "Last name:",
+    "email": "Email:",
+    "repeatPassword": "Repeat password:",
+    "existingAcc": "Already have an account? Log in"
 }
