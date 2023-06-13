@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Login from './Login';
-import Register from "./Register";
+import Login from './components/Login';
+import Register from './components/Register';
+import Lang from './components/Lang';
 
 function App() {
   const [currentForm, setCurrentForm] = useState ('login');
@@ -12,6 +12,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Lang/>
       {
         currentForm === "login" ? <Login onFormSwitch={toggleform}/> : <Register onFormSwitch={toggleform} />
       }
