@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Register = (props) => {
   const [firstName, setFirstName] = useState('');
@@ -32,9 +33,21 @@ const Register = (props) => {
     setRepeatPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Registration logic 
+    const user = {
+      firstName,
+      lastName,
+      email,
+      username,
+    };
+  
+    try {
+      await axios.post('http://localhost:8080/users', user);
+      console.log('User added successfully');
+    } catch (error) {
+      console.error('Error adding user:', error);
+    }
   };
 
   return (

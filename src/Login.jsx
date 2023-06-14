@@ -13,14 +13,10 @@ const Login = (props) => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (username === 'admin' && password === 'password') {
-      // Successful login
-      console.log('Login successful');
-    } else {
-      // Failed login
-      console.log('Invalid username or password');
-    }
+    event.preventDefault()
+    const user={username, password}
+    console.log(user)
+  
   };
 
   return (
