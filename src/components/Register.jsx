@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
 const Register = (props) => {
+  const { t } = useTranslation();
+  
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -52,43 +55,39 @@ const Register = (props) => {
 
   return (
     <div className='auth-form-container'>
-        <h2>Register</h2>
+    <h2>{t('register')}</h2>
     <form className="register-form" onSubmit={handleSubmit}>
-      <label htmlFor="firstName">First name:</label>
+      <label htmlFor="firstName">{t('firstName')}</label>
       <input
         type="text"
         id="firstName"
-        placeholder="First Name"
         value={firstName}
         onChange={handleFirstNameChange}
       />
 
-      <label htmlFor="lastName">Last name:</label>
+      <label htmlFor="lastName">{t('lastName')}</label>
       <input
         type="text"
         id="lastName"
-        placeholder="Last Name"
         value={lastName}
         onChange={handleLastNameChange}
       />
-      <label htmlFor="lastName">Email:</label>
+      <label htmlFor="email">{t('email')}</label>
       <input
         type="email"
         id="email"
-        placeholder="Email"
         value={email}
         onChange={handleEmailChange}
       />
-      <label htmlFor="username">Username:</label>
+      <label htmlFor="username">{t('username')}:</label>
       <input
         type="text"
         id="username"
-        placeholder="Username"
         value={username}
         onChange={handleUsernameChange}
       />
 
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password">{t('password')}:</label>
       <input
         type="password"
         id="password"
@@ -96,7 +95,7 @@ const Register = (props) => {
         onChange={handlePasswordChange}
       />
 
-      <label htmlFor="repeatPassword">Repeat password:</label>
+      <label htmlFor="repeatPassword">{t('repeatPassword')}</label>
       <input
         type="password"
         id="repeatPassword"
@@ -104,9 +103,9 @@ const Register = (props) => {
         onChange={handleRepeatPasswordChange}
       />
 
-      <button type="submit">Register</button>
+      <button type="submit">{t('register')}</button>
 
-      <button className='link-btn' type="button" onClick={() => props.onFormSwitch('login')}>Already have an account?  Log in</button>
+      <button className='link-btn' type="button" onClick={() => props.onFormSwitch('login')}>{t('existingAcc')}</button>
     </form>
     </div>
   );

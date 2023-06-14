@@ -1,0 +1,12 @@
+{
+    "login": "Prijava",
+    "username": "Korisničko ime",
+    "password": "Lozinka",
+    "noAcc": "Nemate račun? Registracija",
+    "register": "Registracija",
+    "firstName": "Ime:",
+    "lastName": "Prezime:",
+    "email": "Email:",
+    "repeatPassword": "Ponovljena lozinka:",
+    "existingAcc": "Već imate račun? Prijava"
+}
