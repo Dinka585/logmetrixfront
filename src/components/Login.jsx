@@ -15,12 +15,33 @@ const Login = (props) => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const user={username, password}
-    console.log(user)
-  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const user = { username, password };
 
+    try {
+      const response = await fetch('http://localhost:8080/api/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
+        localStorage.setItem('token', token);
+        console.log('Login successful');
+    
+      } else {
+    
+        console.log('Login failed');
+      }
+    } catch (error) {
+      console.log('Error occurred while logging in:', error);
+    }
+  };
   return (
     <div className='auth-form-container'>
       <h2>{t('login')}</h2>
