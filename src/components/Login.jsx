@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Home from "../pages/Home";
 
 const Login = (props) => {
   const { t } = useTranslation();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -32,8 +34,8 @@ const Login = (props) => {
         const data = await response.json();
         const token = data.token;
         localStorage.setItem('token', token);
+        setLoggedIn(true);
         console.log('Login successful');
-    
       } else {
     
         console.log('Login failed');
@@ -42,6 +44,11 @@ const Login = (props) => {
       console.log('Error occurred while logging in:', error);
     }
   };
+
+  if (loggedIn) {
+    return <Home />;
+  }
+
   return (
     <div className='auth-form-container'>
       <h2>{t('login')}</h2>
