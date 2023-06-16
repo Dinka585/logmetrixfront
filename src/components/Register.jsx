@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = (props) => {
   const { t } = useTranslation();
-  
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -39,17 +41,22 @@ const Register = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const user = {
+      id: null,
       firstName,
       lastName,
-      email,
       username,
+      password,
+      authorities: ["ROLE_USER"]
     };
   
     try {
       await axios.post('http://localhost:8080/users', user);
       console.log('User added successfully');
+      navigate('/home');
+      console.log(user);
     } catch (error) {
       console.error('Error adding user:', error);
+      console.log(user);
     }
   };
 
