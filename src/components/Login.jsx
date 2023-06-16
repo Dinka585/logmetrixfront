@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Home from "../pages/Home";
+import { useNavigate } from 'react-router-dom';
+import jwt from 'jwt-decode'
 
 const Login = (props) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -33,11 +34,16 @@ const Login = (props) => {
       if (response.ok) {
         const data = await response.json();
         const token = data.token;
+
         localStorage.setItem('token', token);
-        setLoggedIn(true);
         console.log('Login successful');
+
+        if (jwt(token).auth === "ROLE_ADMIN") {
+          navigate('/admin');
+        } else {
+          navigate('/home');
+        }
       } else {
-    
         console.log('Login failed');
       }
     } catch (error) {
@@ -45,9 +51,6 @@ const Login = (props) => {
     }
   };
 
-  if (loggedIn) {
-    return <Home />;
-  }
 
   return (
     <div className='auth-form-container'>

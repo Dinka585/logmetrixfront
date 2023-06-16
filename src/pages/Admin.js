@@ -5,7 +5,7 @@ function Admin() {
 
     return (
     <div>
-        <h1>Amin, welcome to the Admin page</h1>
+        <h1>Welcome to the Admin page</h1>
     </div>
     );
 }
